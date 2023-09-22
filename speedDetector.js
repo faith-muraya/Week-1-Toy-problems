@@ -1,26 +1,19 @@
-function calculateDemeritPoints(speed) {
-    const speedLimit = 70;
-    const demeritPoint = 5;
+const speed = Number(prompt("Enter your speed:"));
 
-    if (speed < speedLimit) {
-        return "Ok";
-    } else {
-        const demeritPoints = Math.floor((speed - speedLimit) / demeritPoint);
-        
-        if (demeritPoints <= 12) {
-            return `Points: ${demeritPoints}`;
-        } else {
-            return "License suspended";
-        }
-    }
-}
+const speedLimit = 70;
+const demeritPointsThreshold = 12;
 
-const carSpeed = parseInt(prompt("Enter the car's speed (in km/h)"));
+const speedDifference = speed - speedLimit;
 
-if (!isNaN(carSpeed)) {
-    const result = calculateDemeritPoints(carSpeed);
-    alert(result);
+if (speed < speedLimit) {
+  alert("Ok");
 } else {
-    alert("Invalid input. Please enter a valid number for car speed.");
-}
+ 
+  const demeritPoints = Math.floor(speedDifference / 5);
 
+  alert("Points: " + demeritPoints);
+
+  if (demeritPoints > demeritPointsThreshold) {
+    alert("License suspended");
+  }
+}
